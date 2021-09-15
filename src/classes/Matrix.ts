@@ -18,6 +18,8 @@ export class Matrix {
     }
 
     exibirMatrix() {
+        console.log(`${this.linhas} X ${this.colunas}`);
+
         this.elements.forEach(linha => {
             console.log(linha)
         });
