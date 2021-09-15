@@ -98,25 +98,17 @@ export class LinearAlgebra {
         }else if(a instanceof Matrix){
             if(!(b instanceof Matrix)) return;
 
-            if(a.colunas === b.linhas){
-                const aNumRows = a.elements.length;
-                const aNumCols = a.elements[0].length;
-                
-                const bNumRows = b.elements.length;
-                const bNumCols = b.elements[0].length;
+            if(a.linhas === b.linhas && a.colunas === b.colunas){
+                const arr: number[][] = [];
+                a.elements.forEach((linha, rowIndex) => {
+                    arr[rowIndex] = [] as number[];
+                    linha.forEach((cell, columnIndex) => {
+                        const result = a.elements[rowIndex][columnIndex] * b.elements[rowIndex][columnIndex]
+                        arr[rowIndex][columnIndex] = result;
+                    })
+                })
 
-                const m = new Array(aNumRows);
-
-                for (var r = 0; r < aNumRows; ++r) {
-                    m[r] = new Array(bNumCols);
-                    for (var c = 0; c < bNumCols; ++c) {
-                        m[r][c] = 0;
-                        for (var i = 0; i < aNumCols; ++i) {
-                            m[r][c] += a.elements[r][i] * b.elements[i][c];
-                        }
-                    }
-                }
-                m.forEach(row => console.log(row));
+                arr.forEach(row => console.log(row));
             }else{
                 throw new Error("Impossivel multiplicar")
             }
@@ -159,6 +151,8 @@ export class LinearAlgebra {
                 throw new Error("Impossivel multiplicar")
             }
         }else if(a instanceof Vector && b instanceof Vector) {
+            if(!(a.linhas === b.dimensoes)) throw new Error("Impossivel multiplicar");
+
             const arrSum: number[] = []
 
             a.elements.forEach((cell, colunaNumber) => {

@@ -20,6 +20,10 @@ const vectorB = new Vector(1, 3, [
   4, 9 ,8
 ]);
 
+const vectorC = new Vector(3, 1, [
+  6, 9, 10
+])
+
 const matrixTransposta = LinearAlgebra.transpose(matrixA);
 if(matrixTransposta instanceof Matrix){
   console.log('-------------------------Matriz Transposta-------------------------')
@@ -54,4 +58,4 @@ console.log('-------------------------Matrix dot com Matrix---------------------
 LinearAlgebra.dot(matrixA, matrixB);
 
 console.log('-------------------------Vector dot com Vector-------------------------')
-LinearAlgebra.dot(vectorA, vectorB);
+LinearAlgebra.dot(vectorA, vectorC);
