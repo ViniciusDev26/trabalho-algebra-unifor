@@ -3,12 +3,12 @@ import { Vector } from "../classes/Vector";
 import { LinearAlgebra } from "../classes/LinearAlgebra";
 
 const matrixA = new Matrix(2, 2, [
-  [4, 3],
-  [2, 1]
+  [-1, 3],
+  [4, 2]
 ]);
 
 const matrixB = new Matrix(2, 2, [
-  [4, 9],
+  [1, 2],
   [3, 4]
 ])
 
@@ -46,3 +46,6 @@ LinearAlgebra.times(5, vectorA);
 
 console.log('-------------------------Matrix Times com Matrix-------------------------')
 LinearAlgebra.times(matrixA, matrixB);
+
+console.log('-------------------------Vector Times com Vector-------------------------')
+LinearAlgebra.times(vectorA, vectorB);
