@@ -49,3 +49,9 @@ LinearAlgebra.times(matrixA, matrixB);
 
 console.log('-------------------------Vector Times com Vector-------------------------')
 LinearAlgebra.times(vectorA, vectorB);
+
+console.log('-------------------------Matrix dot com Matrix-------------------------')
+LinearAlgebra.dot(matrixA, matrixB);
+
+console.log('-------------------------Vector dot com Vector-------------------------')
+LinearAlgebra.dot(vectorA, vectorB);

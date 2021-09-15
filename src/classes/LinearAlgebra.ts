@@ -120,9 +120,45 @@ export class LinearAlgebra {
             }else{
                 throw new Error("Impossivel multiplicar")
             }
+            
         }else if(a instanceof Vector) {
             if(!(b instanceof Vector)) return;
 
+            const arrSum: number[] = []
+
+            a.elements.forEach((cell, colunaNumber) => {
+                arrSum.push(cell * b.elements[colunaNumber]);
+            })
+            
+            console.log(arrSum);
+        }
+    }
+
+    static dot(a: Matrix | Vector, b: Matrix | Vector) {
+        if(a instanceof Matrix && b instanceof Matrix){
+            if(a.colunas === b.linhas){
+                const aNumRows = a.elements.length;
+                const aNumCols = a.elements[0].length;
+                
+                const bNumRows = b.elements.length;
+                const bNumCols = b.elements[0].length;
+    
+                const m = new Array(aNumRows);
+    
+                for (var r = 0; r < aNumRows; ++r) {
+                    m[r] = new Array(bNumCols);
+                    for (var c = 0; c < bNumCols; ++c) {
+                        m[r][c] = 0;
+                        for (var i = 0; i < aNumCols; ++i) {
+                            m[r][c] += a.elements[r][i] * b.elements[i][c];
+                        }
+                    }
+                }
+                m.forEach(row => console.log(row));
+            }else{
+                throw new Error("Impossivel multiplicar")
+            }
+        }else if(a instanceof Vector && b instanceof Vector) {
             const arrSum: number[] = []
 
             a.elements.forEach((cell, colunaNumber) => {
